@@ -1,0 +1,42 @@
+room_number,node_id,name,label,direction_hint_hun,direction_hint_en,state
+001,1,F/001,lab,F/002-F/004 termek megtalálásához induljon balra. Egyéb esetben induljon jobbra.,For rooms F/002-F/004 head left. Else head right.,free
+002,2,F/002,lab,,,free
+003,2,F/003,lab,,,free
+004,1,F/004,lab,,,free
+005,6,F/005,toilet,,,free
+006,6,F/006,lab,,,free
+007,3,F/007,archive,,,free
+008,6,F/008,archive,,,free
+101,8,F/101,office,F/102-F/106 és F/001-F/007 termek megtalálásához induljon balra. Egyéb esetben induljon jobbra.,For rooms F/102-F/106 and F/001-F/007 head left. Else head right.,free
+102,9,F/102,office,,,free
+103,9,F/103,lab,,,free
+104,9,F/104,office,,,free
+105,9,F/105,office,F/102-F/104 termek megtalálásához induljon jobbra. Egyéb esetben induljon balra.,For rooms F/102-F/104 head right. Else head left.,free
+106,9,F/106,office,F/102-F/105 termek megtalálásához induljon jobbra. Egyéb esetben induljon balra.,For rooms F/102-F/105 head right. Else head left.,free
+107,8,F/107,lab,F/102-F/106 és F/001-F/007 termek megtalálásához induljon jobbra. Egyéb esetben induljon balra.,For rooms F/102-F/106 and F/001-F/007 head right. Else head left.,free
+108,8,F/108,server_room,F/102-F/107 és F/001-F/007 termek megtalálásához induljon jobbra. Egyéb esetben induljon balra.,For rooms F/102-F/107 and F/001-F/007 head right. Else head left.,free
+109,10,F/109,office,,,free
+110,10,F/110,office,,,free
+111,10,F/111,lab,,,free
+200,20,F/200,toilet,F/202-F/208 termek megtalálásához induljon balra. Egyéb esetben induljon jobbra.,For rooms F/202-F/208 head left. Else head right.,free
+201,19,F/201,lab,Ha a következő lépésben nem kell lemennie a jobb oldali lépcsőn induljon balra.,Head left if you're not about to go down the stairs on the right.,free
+202,20,F/202,office,F/203-F/206 termek megtalálásához induljon balra. Egyéb esetben induljon jobbra.,For rooms F/203-F/206 head left. Else head right.,free
+203,20,F/203,server_room,F/204-F/206 termek megtalálásához induljon balra. Egyéb esetben induljon jobbra.,For rooms F/204-F/206 head left. Else head right.,free
+204,20,F/204,lab,,,free
+205,20,F/205,lab,,,free
+206,20,F/206,lab,F/204-F/205 termek megtalálásához induljon jobbra. Egyéb esetben induljon balra.,For rooms F/204-F/205 head right. Else head left.,free
+207,20,F/207,lab,F/202-F/206 termek megtalálásához induljon jobbra. Egyéb esetben induljon balra.,For rooms F/202-F/206 head right. Else head left.,free
+208,20,F/208,lab,F/202-F/207 termek megtalálásához induljon jobbra. Egyéb esetben induljon balra.,For rooms F/202-F/207 head right. Else head left.,free
+209,21,F/209,office,F/210-F/220 termek megtalálásához (vagy ha mosdót keres) induljon balra. Egyéb esetben induljon jobbra.,For rooms F/210-F/220 (or if you're looking for a toilet) head left. Else head right.,free
+210,21,F/210,office,F/211-F/219 termek megtalálásához (vagy ha mosdót keres) induljon balra. Egyéb esetben induljon jobbra.,For rooms F/211-F/219 (or if you're looking for a toilet) head left. Else head right.,free
+211,21,F/211,office,F/212-F/216 termek megtalálásához (vagy ha mosdót keres) induljon balra. Egyéb esetben induljon jobbra.,For rooms F/212-F/216 (or if you're looking for a toilet) head left. Else head right.,free
+212,21,F/212,office,F/213-F/215 termek megtalálásához (vagy ha mosdót keres) induljon balra. Egyéb esetben induljon jobbra.,For rooms F/213-F/215 (or if you're looking for a toilet) head left. Else head right.,free
+213,21,F/213,office,,,free
+214,21,F/214,office,,,free
+215,21,F/215,office,F/212-F/214 termek megtalálásához induljon jobbra. Egyéb esetben induljon balra.,For rooms F/212-F/214 head right. Else head left.,free
+216,21,F/216,office,F/212-F/215 termek megtalálásához induljon jobbra. Egyéb esetben induljon balra.,For rooms F/212-F/215 head right. Else head left.,free
+217,21,F/217,toilet,F/212-F/216 termek megtalálásához induljon jobbra. Egyéb esetben induljon balra.,For rooms F/212-F/216 head right. Else head left.,free
+219,21,F/219,office,F/211-F/216 termek megtalálásához (vagy ha mosdót keres) induljon jobbra. Egyéb esetben induljon balra.,For rooms F/211-F/216 (or if you're looking for a toilet) head right. Else head left.,free
+220,21,F/220,office,F/210-F/219 termek megtalálásához (vagy ha mosdót keres) induljon jobbra. Egyéb esetben induljon balra.,For rooms F/210-F/219 (or if you're looking for a toilet) head right. Else head left.,free
+221,21,F/221,office,F/210-F/220 termek megtalálásához (vagy ha mosdót keres) induljon jobbra. Egyéb esetben induljon balra.,For rooms F/210-F/220 (or if you're looking for a toilet) head right. Else head left.,free
+222,21,F/222,office,F/209-F/220 termek megtalálásához (vagy ha mosdót keres) induljon jobbra. Egyéb esetben induljon balra.,For rooms F/209-F/220 (or if you're looking for a toilet) head right. Else head left.,free

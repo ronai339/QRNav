@@ -1,0 +1,49 @@
+{% extends "admin_operator/admin_operator_base.html" %}
+
+{% block title1 %}{{ t["add_edge_title"] }}{% endblock %}
+{% block title2 %}{{ t["add_edge_title"] }}{% endblock %}
+{% block toAdminPanel %}
+     <a href="/admin_operator" class="border-2 border-blue-800 dark:border-blue-200 transition duration-200 text-sm text-blue-800 block px-4 py-2 bg-blue-50 dark:bg-blue-800 dark:text-blue-200 hover:bg-blue-100 rounded font-medium">
+         {% if is_admin %}{{ t["admin_panel"] }}{% else %}{{ t["operator_panel"] }}{% endif %}</a>
+{% endblock %}
+
+{% block content %}
+<div class="space-y-4 max-w-md">
+    <form method="post">
+        <label>{{ t["from_node"] }}: </label><br>
+        <select name="from_node" class="bg-white text-black px-2 py-1 rounded border border-black">
+            {% for id, name in nodes %}
+                <option value="{{ id }}">{{ id }} – {{ name }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label>{{ t["to_node"] }}: </label><br>
+        <select name="to_node" class="bg-white text-black px-2 py-1 rounded border border-black">
+            {% for id, name in nodes %}
+                <option value="{{ id }}">{{ id }} – {{ name }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <h3 class="font-bold">{{ t["direction_from"] }}</h3>
+        <label>{{ t["instruction_hun"] }}</label><br>
+        <input type="text" name="instruction_hun1" class="px-2 py-1 text-black rounded border border-black"><br>
+        <label>{{ t["instruction_en"] }}</label><br>
+        <input type="text" name="instruction_en1" class="px-2 py-1 text-black rounded border border-black"><br>
+        <label>{{ t["cost_default"] }}</label><br>
+        <input type="number" name="cost1" step="0.1" class="px-2 py-1 text-black rounded border border-black"><br>
+        <label><input type="checkbox" name="open1" checked>{{ t["edge_open"] }}</label><br><br>
+
+        <h3 class="font-bold">{{ t["direction_to"] }}</h3>
+        <label>{{ t["instruction_hun"] }}</label><br>
+        <input type="text" name="instruction_hun2" class="px-2 py-1 text-black rounded border border-black"><br>
+        <label>{{ t["instruction_en"] }}</label><br>
+        <input type="text" name="instruction_en2" class="px-2 py-1 text-black rounded border border-black"><br>
+        <label>{{ t["cost_default"] }}</label><br>
+        <input type="number" name="cost2" step="0.1" class="px-2 py-1 text-black rounded border border-black"><br>
+        <label><input type="checkbox" name="open2" checked>{{ t["edge_open"] }}</label><br><br>
+
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">{{ t["add_edge_title"] }}</button>
+        <a href="/admin_operator/edges" class="ml-4 text-sm text-gray-500 dark:text-blue-300 hover:underline">{{ t["cancel"] }}</a>
+    </form>
+</div>
+{% endblock %}

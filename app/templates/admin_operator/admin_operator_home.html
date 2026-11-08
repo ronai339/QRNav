@@ -1,0 +1,24 @@
+{% extends "admin_operator/admin_operator_base.html" %}
+
+{% block title1 %}{% if is_admin %}{{ t["admin_panel"] }}{% else %}{{ t["operator_panel"] }}{% endif %}{% endblock %}
+{% block title2 %}{% if is_admin %}{{ t["admin_panel"] }}{% else %}{{ t["operator_panel"] }}{% endif %}{% endblock %}
+{% block toAdminPanel %}{% endblock %}
+
+{% block content %}
+        <ul class="space-y-3">
+            <li><a href="/admin_operator/rooms" class="block px-4 py-2 bg-blue-100 hover:bg-blue-200 rounded text-blue-800 dark:bg-blue-900 dark:text-blue-200 dark-hover:blue-500 font-medium">{{ t["manage_rooms"] }} &rarr;</a></li>
+            <li><a href="/admin_operator/nodes" class="block px-4 py-2 bg-blue-100 hover:bg-blue-200 rounded text-blue-800 dark:bg-blue-900 dark:text-blue-200 font-medium">{{ t["manage_nodes"] }} &rarr;</a></li>
+            <li><a href="/admin_operator/edges" class="block px-4 py-2 bg-blue-100 hover:bg-blue-200 rounded text-blue-800 dark:bg-blue-900 dark:text-blue-200 font-medium">{{ t["manage_edges"] }} &rarr;</a></li>
+            {% if is_admin %}
+            <li><a href="/admin_operator/node_assignments" class="block px-4 py-2 bg-blue-100 hover:bg-blue-200 rounded text-blue-800 dark:bg-blue-900 dark:text-blue-200 font-medium">{{ t["node_assignments_title"] }} &rarr;</a></li>
+            <li><a href="/admin_operator/create_user" class="block px-4 py-2 bg-blue-100 hover:bg-blue-200 rounded text-blue-800 dark:bg-blue-900 dark:text-blue-200 font-medium">{{ t["create_user_title"] }} &rarr;</a></li>
+            {% endif %}
+            <li><a href="/admin_operator/history" class="block px-4 py-2 bg-green-100 hover:bg-green-200 rounded text-green-800 dark:bg-green-900 dark:text-green-200 font-medium">{{ t["view_graph_history"] }} &rarr;</a></li>
+            <li><a href="/admin_operator/graph/interactive" class="block px-4 py-2 bg-green-100 hover:bg-green-200 rounded text-green-800 dark:bg-green-900 dark:text-green-200 font-medium">{{ t["view_graph"] }} &rarr;</a></li>
+            <li><a href="/admin_operator/export/rooms" class="block px-4 py-2 bg-yellow-100 hover:bg-yellow-200 rounded text-yellow-800 dark:bg-yellow-700 dark:text-yellow-200 font-medium">{{ t["export_rooms"] }}</a></li>
+            <li><a href="/admin_operator/export/nodes" class="block px-4 py-2 bg-yellow-100 hover:bg-yellow-200 rounded text-yellow-800 dark:bg-yellow-700 dark:text-yellow-200 font-medium">{{ t["export_nodes"] }}</a></li>
+            <li><a href="/admin_operator/export/edges" class="block px-4 py-2 bg-yellow-100 hover:bg-yellow-200 rounded text-yellow-800 dark:bg-yellow-700 dark:text-yellow-200 font-medium">{{ t["export_edges"] }}</a></li>
+            <li><a href="/admin_operator/change_password" class="block px-4 py-2 bg-red-100 hover:bg-red-200 rounded text-red-800 dark:bg-red-900 dark:text-red-200 font-medium">{{ t["change_password_title"] }} &rarr;</a></li>
+            <li><a href="/logout" class="block px-4 py-2 bg-red-100 hover:bg-red-200 rounded text-red-800 dark:bg-red-900 dark:text-red-200 font-medium">{{ t["logout"] }}</a></li>
+        </ul>
+{% endblock %}

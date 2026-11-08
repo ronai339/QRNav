@@ -1,0 +1,38 @@
+{% extends "admin_operator/admin_operator_base.html" %}
+
+{% block title1 %}{{ t["edit_room_title"] }} {{ room[0] }}{% endblock %}
+{% block title2 %}{{ t["edit_room_title"] }} #{{ room[0] }}{% endblock %}
+{% block toAdminPanel %}
+     <a href="/admin_operator" class="border-2 border-blue-800 dark:border-blue-200 transition duration-200 text-sm text-blue-800 block px-4 py-2 bg-blue-50 dark:bg-blue-800 dark:text-blue-200 hover:bg-blue-100 rounded font-medium">
+         {% if is_admin %}{{ t["admin_panel"] }}{% else %}{{ t["operator_panel"] }}{% endif %}</a>
+{% endblock %}
+
+{% block content %}
+<div class="space-y-4 max-w-md">
+    <form method="post">
+        <label>{{ t["room_name"] }}</label><br>
+        <input type="text" name="name" value="{{ room[1] }}" class="px-2 py-1 text-black rounded border border-black"><br><br>
+
+        <label>{{ t["op_label"] }}</label><br>
+        <input type="text" name="label" value="{{ room[2] or '' }}" class="px-2 py-1 text-black rounded border border-black"><br><br>
+
+        <label>{{ t["op_direction_hint_en"] }}</label><br>
+        <input type="text" name="direction_hint_en" value="{{ room[4] or '' }}" class="px-2 py-1 text-black rounded border border-black"><br><br>
+
+        <label>{{ t["op_direction_hint_hun"] }}</label><br>
+        <input type="text" name="direction_hint_hun" value="{{ room[3] or '' }}" class="px-2 py-1 text-black rounded border border-black"><br><br>
+
+        <label>{{ t["state"] }}</label><br>
+        <select name="state" class="bg-white text-black px-2 py-1 rounded border border-black">
+            <option value="free">{{ t["free"] }}</option>
+            <option value="closed">{{ t["closed"] }}</option>
+            <option value="in_use">{{ t["in_use"] }}</option>
+            <option value="maintenance">{{ t["maintenance"] }}</option>
+            <option value="undefined">{{ t["undefined"] }}</option>
+        </select><br><br>
+
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">{{ t["save"] }}</button>
+        <a href="/admin_operator/rooms" class="ml-4 text-sm text-gray-500 dark:text-blue-300  hover:underline">{{ t["cancel"] }}</a>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "admin_operator/admin_operator_base.html" %}
+
+{% block title1 %}{{ t["graph_interactive_title"] }} {% if floor %}(Floor {{ floor }}){% endif %}{% endblock %}
+{% block title2 %}{{ t["graph_interactive_title"] }} {% if floor %}(Floor {{ floor }}){% endif %}{% endblock %}
+{% block toAdminPanel %}
+     <a href="/admin_operator" class="border-2 border-blue-800 dark:border-blue-200 transition duration-200 text-sm text-blue-800 block px-4 py-2 bg-blue-50 hover:bg-blue-100 rounded dark:bg-blue-800 dark:text-blue-200 font-medium">
+         {% if is_admin %}{{ t["admin_panel"] }}{% else %}{{ t["operator_panel"] }}{% endif %}</a>
+{% endblock %}
+
+{% block content %}
+    <script src="https://unpkg.com/cytoscape/dist/cytoscape.min.js"></script>
+    <style>
+        #cy {
+            width: 100%;
+            height: 600px;
+            border: 1px solid #ccc;
+            margin-top: 20px;
+        }
+        .toolbar {
+            margin-bottom: 1em;
+        }
+    </style>
+
+    <div class="space-y-4 max-w-md">
+        <form class="toolbar" method="get" action="/admin_operator/graph/interactive">
+            <label class="font-medium">{{ t["floor_filter"] }}</label>
+            <div class="flex items-center">
+                <input type="number" name="floor" value="{{ floor or '' }}" class="mb-2 block border-2 border-black px-4 py-2 text-black dark:bg-gray-700 dark:text-gray-200 rounded font-medium">
+                <button type="submit" class="ml-2 mr-2 block px-4 py-2 bg-blue-100 hover:bg-blue-200 rounded text-blue-800 dark:bg-blue-900 dark:text-blue-200 font-medium" >{{ t["view"] }}</button>
+                <a href="/admin_operator/graph/interactive" class="block px-4 py-2 bg-yellow-100 hover:bg-yellow-200 rounded text-yellow-800 dark:bg-yellow-700 dark:text-yellow-200 font-medium" >{{ t["show_all"] }}</a>
+            </div>
+        </form>
+    </div>
+    <div id="cy"></div>
+
+    <script src="https://unpkg.com/cytoscape/dist/cytoscape.min.js"></script>
+    <script> window.graphData = {{ graph_data|tojson }}; </script>
+    <script src="{{ url_for('static', filename='js/graph.js') }}"></script>
+
+{% endblock %}

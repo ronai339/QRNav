@@ -1,0 +1,25 @@
+{
+  "name": "qrnav",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "dev:css": "tailwindcss -i ./static/src/style.css -o ./static/dist/style.css --watch",
+    "build:css": "tailwindcss -i ./static/src/style.css -o ./static/dist/style.css --minify"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.3",
+    "vite": "^7.0.6"
+  },
+  "description": "QRNav (placeholder name, to be changed later) is a web-based indoor navigation system for buildings using QR codes and a custom floor graph model.  \r It allows users to generate step-by-step navigation instructions between rooms, and lets administrators maintain the building map dynamically.",
+  "main": "tailwind.config.js",
+  "directories": {
+    "test": "tests"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

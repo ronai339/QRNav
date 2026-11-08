@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title1 %}{{ t["login_title"] }}{% endblock %}
+{% block title2 %}{{ t["login_title"] }}{% endblock %}
+
+{% block content %}
+
+{% if error %}
+    <p class="text-red-600 text-sm text-center">{{ error }}</p>
+{% endif %}
+
+<form method="post" class="space-y-4">
+    <div>
+        <label class="block text-sm font-medium text-gray-700 dark:text-gray-200">{{ t["username"] }}</label>
+        <input type="text" name="username" required
+               class="w-full border border-gray-300 dark:bg-gray-700 dark:text-gray-200 rounded px-3 py-2 focus:outline-none focus:ring focus:border-blue-300">
+    </div>
+
+    <div>
+        <label class="block text-sm font-medium text-gray-700 dark:text-gray-200">{{ t["password"] }}</label>
+        <input type="password" name="password" required
+               class="w-full border border-gray-300 dark:bg-gray-700 dark:text-gray-200 rounded px-3 py-2 focus:outline-none focus:ring focus:border-blue-300">
+    </div>
+
+    <button type="submit"
+            class="w-full bg-blue-600 dark:bg-blue-800 dark:text-blue-100 text-white py-2 rounded hover:bg-blue-700 transition">{{ t["login"] }}
+    </button>
+</form>
+
+<div class="text-center">
+    <a href="/" class="text-sm text-gray-500 dark:text-blue-200 hover:underline">&larr; {{ t["back_to_nav"] }}</a>
+</div>
+
+{% endblock %}

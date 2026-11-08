@@ -1,0 +1,49 @@
+{% extends "admin_operator/admin_operator_base.html" %}
+
+{% block title1 %}{{ t["edit_edge_title"] }} {{ edge[0] }}{% endblock %}
+{% block title2 %}{{ t["edit_edge_title"] }} #{{ edge[0] }}{% endblock %}
+{% block toAdminPanel %}
+     <a href="/admin_operator" class="border-2 border-blue-800 dark:border-blue-200 transition duration-200 text-sm text-blue-800 block px-4 py-2 bg-blue-50 dark:bg-blue-800 dark:text-blue-200 hover:bg-blue-100 rounded font-medium">
+         {% if is_admin %}{{ t["admin_panel"] }}{% else %}{{ t["operator_panel"] }}{% endif %}</a>
+{% endblock %}
+
+{% block content %}
+<div class="space-y-4 max-w-md">
+    <form method="post">
+        <label>{{ t["from_node"] }}</label><br>
+        <select name="from_node" class="bg-white text-black px-1 py-1 rounded border border-black">
+            {% for id, name in nodes %}
+                <option value="{{ id }}" {% if edge[1] == id %}selected{% endif %}>
+                    {{ id }} – {{ name }}
+                </option>
+            {% endfor %}
+        </select><br><br>
+
+        <label>{{ t["to_node"] }}</label><br>
+        <select name="to_node" class="bg-white text-black px-1 py-1 rounded border border-black">
+            {% for id, name in nodes %}
+                <option value="{{ id }}" {% if edge[2] == id %}selected{% endif %}>
+                    {{ id }} – {{ name }}
+                </option>
+            {% endfor %}
+        </select><br><br>
+
+        <label>{{ t["instruction_en"] }}</label><br>
+        <input type="text" name="instruction_en" value="{{ edge[5] or '' }}" class="px-2 py-1 text-black rounded border border-black"><br><br>
+
+        <label>{{ t["instruction_hun"] }}</label><br>
+        <input type="text" name="instruction_hun" value="{{ edge[4] or '' }}" class="px-2 py-1 text-black rounded border border-black"><br><br>
+
+        <label>{{ t["current_cost"] }}</label><br>
+        <input type="number" name="cost" step="0.1" value="{{ edge[3] }}" class="px-2 py-1 text-black rounded border border-black"><br><br>
+
+        <label>
+            <input type="checkbox" name="open" {% if edge[6] == 1 %}checked{% endif %}>
+            {{ t["edge_open"] }}
+        </label><br><br>
+
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">{{ t["save"] }}</button>
+        <a href="/admin_operator/edges" class="ml-4 text-sm text-gray-500 dark:text-blue-300 hover:underline">{{ t["cancel"] }}</a>
+    </form>
+</div>
+{% endblock %}

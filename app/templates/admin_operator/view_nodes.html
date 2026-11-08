@@ -1,0 +1,56 @@
+{% extends "admin_operator/admin_operator_base.html" %}
+
+{% block title1 %}{{ t["view_nodes_title"] }}{% endblock %}
+{% block title2 %}{{ t["view_nodes_title"] }}{% endblock %}
+{% block toAdminPanel %}
+     <a href="/admin_operator" class="border-2 border-blue-800 dark:border-blue-200 transition duration-200 text-sm text-blue-800 block px-4 py-2 bg-blue-50 dark:bg-blue-800 dark:text-blue-200 hover:bg-blue-100 rounded font-medium">
+         {% if is_admin %}{{ t["admin_panel"] }}{% else %}{{ t["operator_panel"] }}{% endif %}</a>
+{% endblock %}
+
+{% block content %}
+
+{% if is_admin %}
+<p><a href="/admin_operator/nodes/add" class="mb-2 block px-4 py-2 bg-blue-100 hover:bg-blue-200 rounded text-blue-800 dark:bg-blue-900 dark:text-blue-200 font-medium">{{ t["add_node_title"] }}</a></p>
+
+<div class="mb-2 border-2 border-blue-700 dark:border-blue-200 block px-4 py-2 rounded text-blue-800 font-medium">
+    <h3 class="mb-2 dark:text-blue-200">{{ t["import_nodes"] }}</h3>
+    <div class="space-y-4 max-w-md dark:text-blue-200">
+        <form action="/admin_operator/import/nodes" method="post" enctype="multipart/form-data" class="mb-2">
+            <input type="file" name="file" accept=".csv" required class="mb-3 mt-2">
+            <button type="submit" class="block px-4 py-2 bg-blue-100 hover:bg-blue-200 rounded text-blue-800 dark:bg-blue-900 dark:text-blue-200 font-medium">{{ t["upload_import"] }}</button>
+        </form>
+    </div>
+</div>
+{% endif %}
+
+<p><a href="/admin_operator/export/nodes" class="mb-2 block px-4 py-2 bg-yellow-100 hover:bg-yellow-200 rounded text-yellow-800 dark:bg-yellow-700 dark:text-yellow-200 font-medium">{{ t["export_nodes"] }}</a></p>
+
+<table cellpadding="6" class="w-full border-separate border-spacing-1 border-gray-400 dark:border-gray-500">
+    <thead>
+        <tr class="bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-200">
+            <th>{{ t["id"] }}</th>
+            <th>{{ t["node_name"] }}</th>
+            <th>{{ t["node_type"] }}</th>
+            <th>{{ t["floor"] }}</th>
+            <th>{{ t["wing"] }}</th>
+            <th>{{ t["label"] }}</th>
+            <th>{{ t["view_actions"] }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for node in nodes %}
+            <tr class="bg-gray-100 dark:bg-gray-600 dark:text-white {% if node[0] not in accessible_nodes %} text-gray-500 {% endif %}">
+                {% for field in node %}
+                    <td>{{ field or '' }}</td>
+                {% endfor %}
+                <td>
+                    {% if is_admin or node[0] in accessible_nodes %}
+                    <a href="/admin_operator/nodes/edit/{{ node[0] }}" class="mb-1 block px-2 py-1 bg-yellow-100 hover:bg-yellow-200 rounded text-yellow-800 dark:bg-yellow-700 dark:text-yellow-200 font-small">{{ t["edit"] }}</a>
+                    <a href="/admin_operator/nodes/delete/{{ node[0] }}" onclick="return confirm('Delete node {{ node[0] }} and its edges?');" class="block px-2 py-1 bg-red-100 hover:bg-red-200 rounded text-red-800 dark:bg-red-900 dark:text-red-200 font-small">{{ t["delete"] }}</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

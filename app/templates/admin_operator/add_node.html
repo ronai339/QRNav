@@ -1,0 +1,38 @@
+{% extends "admin_operator/admin_operator_base.html" %}
+
+{% block title1 %}{{ t["add_node_title"] }}{% endblock %}
+{% block title2 %}{{ t["add_node_title"] }}{% endblock %}
+{% block toAdminPanel %}
+     <a href="/admin_operator" class="border-2 border-blue-800 dark:border-blue-200 transition duration-200 text-sm text-blue-800 block px-4 py-2 bg-blue-50 dark:bg-blue-800 dark:text-blue-200 hover:bg-blue-100 rounded font-medium">
+         {% if is_admin %}{{ t["admin_panel"] }}{% else %}{{ t["operator_panel"] }}{% endif %}</a>
+{% endblock %}
+
+{% block content %}
+<div class="space-y-4 max-w-md">
+    <form method="post">
+        <label>{{ t["node_name"] }}</label><br>
+        <input type="text" name="name" class="px-2 py-1 text-black rounded border border-black" required><br><br>
+
+        <label>{{ t["node_type"] }}</label><br>
+        <select name="type" class="bg-white text-black px-2 py-1 rounded border border-black" required>
+            <option value="corridor">{{ t["corridor"] }}</option>
+            <option value="staircase">{{ t["staircase"] }}</option>
+            <option value="elevator">{{ t["elevator"] }}</option>
+            <option value="exit">{{ t["exit"] }}</option>
+            <option value="other">{{ t["other"] }}</option>
+        </select><br><br>
+
+        <label>{{ t["floor"] }}</label><br>
+        <input type="number" name="floor" class="px-2 py-1 text-black rounded border border-black" required><br><br>
+
+        <label>{{ t["wing"] }}</label><br>
+        <input type="text" name="wing" class="px-2 py-1 text-black rounded border border-black" required><br><br>
+
+        <label>{{ t["op_label"] }}</label><br>
+        <input type="text" name="label" class="px-2 py-1 text-black rounded border border-black"><br><br>
+
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">{{ t["add_node_title"] }}</button>
+        <a href="/admin_operator/nodes" class="ml-4 text-sm text-gray-500 dark:text-blue-300 hover:underline">{{ t["cancel"] }}</a>
+    </form>
+</div>
+{% endblock %}
